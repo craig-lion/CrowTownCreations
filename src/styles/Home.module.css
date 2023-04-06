@@ -9,19 +9,36 @@
     align-items: center;
     padding: 6rem;
     min-height: 50vh;
-    border: 5px solid orange;
+    border: 5px solid lawngreen;
 }
 
 .pillBox {
     border: 5px solid crimson;
+    width: 100%;
+    flex: auto;
 }
 
 .pillBoxTopTitle {
     border: 5px solid darkseagreen;
+    text-align: center;
 }
 
 .pillBoxBottomContainer {
-    border: 5px solid deeppink;
+    border: 5px solid slateblue;
+    width: 100%;
+    flex: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.infoBoxPhoto {
+    border: 15px solid indigo;
+    flex: auto;
+}
+
+.infoBoxText {
+    border: 15px solid palevioletred;
+    flex: auto;
 }
 
 

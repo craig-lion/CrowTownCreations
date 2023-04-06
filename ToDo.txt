@@ -16,6 +16,7 @@ CrowTown ToDo
             - infoBox can render two components
             - create subcomponents
                 - infoBoxPhoto
+                    - can display photo
                 - infoBoxText
                     - infoBoxText has a title section
                     - infoBoxText has a paragraph section

@@ -14,10 +14,16 @@ const PillBox: React.FC<PillBoxProps> = ({title, container: Container}) => {
   return(
     <div>
       <div className={styles.pillBoxTopTitle}>{title}</div>
-      <div className={styles.pillBoxBottomContainer}>
-        Butt Stuff Here
-        <Container/>
-      </div>
+      <div className={styles.pillBoxBottomContainer}><Container/></div>
+    </div>
+  );
+};
+
+const PillBoxTitle: React.FC<PillBoxProps> = ({title, container: Container}) => {
+  return(
+    <div>
+      <div className={styles.pillBoxTopTitle}>{title}</div>
+      <div className={styles.pillBoxBottomContainer}><Container/></div>
     </div>
   );
 };
@@ -25,15 +31,21 @@ const PillBox: React.FC<PillBoxProps> = ({title, container: Container}) => {
 const PillBoxBottomContainer: React.FC<{}> = () => {
   return (
     <div className={styles.pillBoxBottomContainer}>
-      <div>InfoBoxComponent1</div>
-      <div>InfoBoxComponent2</div>
+      <div className={styles.infoBoxPhoto}><InfoBoxPhoto /></div>
+      <div className={styles.infoBoxText}><InfoBoxText /></div>
     </div>
   );
 };
-const InfoBox: React.FC<{}> = () => {
+const InfoBoxPhoto: React.FC<{}> = () => {
+  return (
+      <div>InfoBoxPhotoComponent</div>
+  );
+};
+
+const InfoBoxText: React.FC<{}> = () => {
   return (
     <div>
-      <div>InfoBoxComponent1</div>
+      <div>InfoBoxTextComponent</div>
     </div>
   );
 };
@@ -41,9 +53,6 @@ const InfoBox: React.FC<{}> = () => {
 export default function Home() {
   return (
     <>
-      <div className={styles.topBar}>
-        PillTestHere
-      </div>
       <div className={styles.topBar}>
         Top Bar Here
       </div>
