@@ -1,0 +1,23 @@
+CrowTown ToDo
+
+- Complete Frontend
+     - Complete HTML Layout
+        x proper number of divs 
+        - style topBar
+        - style mainContainer
+        - style pillBoxes
+        - create pillBox
+            x pillBox can render
+            x pillBox has topTitle
+            x topTitle is a prop
+            x pillBox has bottomContainer
+            - pillBoxBottomContainer accepts PillType prop
+        - create container for infoBox
+            - infoBox can render two components
+            - create subcomponents
+                - infoBoxPhoto
+                - infoBoxText
+                    - infoBoxText has a title section
+                    - infoBoxText has a paragraph section
+        - create container for topItems
+        - create container for socials
