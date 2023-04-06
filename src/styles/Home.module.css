@@ -23,7 +23,7 @@
     text-align: center;
 }
 
-.pillBoxBottomContainer {
+.pillBoxBottomContainerInfo {
     border: 5px solid slateblue;
     width: 100%;
     flex: auto;
@@ -32,12 +32,12 @@
 }
 
 .infoBoxPhoto {
-    border: 15px solid indigo;
+    border: 5px solid orangered;
     flex: auto;
 }
 
 .infoBoxText {
-    border: 15px solid palevioletred;
+    border: 5px solid palegreen;
     flex: auto;
 }
 

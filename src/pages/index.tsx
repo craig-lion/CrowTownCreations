@@ -1,54 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import {PillBox} from './_pills'
 
-const inter = Inter({ subsets: ['latin'] });
-
-interface PillBoxProps {
-  title: string;
-  container: React.FC<{}>;
-}
-
-const PillBox: React.FC<PillBoxProps> = ({title, container: Container}) => {
-  return(
-    <div>
-      <div className={styles.pillBoxTopTitle}>{title}</div>
-      <div className={styles.pillBoxBottomContainer}><Container/></div>
-    </div>
-  );
-};
-
-const PillBoxTitle: React.FC<PillBoxProps> = ({title, container: Container}) => {
-  return(
-    <div>
-      <div className={styles.pillBoxTopTitle}>{title}</div>
-      <div className={styles.pillBoxBottomContainer}><Container/></div>
-    </div>
-  );
-};
-
-const PillBoxBottomContainer: React.FC<{}> = () => {
-  return (
-    <div className={styles.pillBoxBottomContainer}>
-      <div className={styles.infoBoxPhoto}><InfoBoxPhoto /></div>
-      <div className={styles.infoBoxText}><InfoBoxText /></div>
-    </div>
-  );
-};
-const InfoBoxPhoto: React.FC<{}> = () => {
-  return (
-      <div>InfoBoxPhotoComponent</div>
-  );
-};
-
-const InfoBoxText: React.FC<{}> = () => {
-  return (
-    <div>
-      <div>InfoBoxTextComponent</div>
-    </div>
-  );
-};
 
 export default function Home() {
   return (
@@ -58,19 +12,19 @@ export default function Home() {
       </div>
       <div className={styles.mainContainer}>
         <div className={styles.pillBox}>
-          <PillBox title="WELCOME TO CROWTOWN FAMILY!" container={PillBoxBottomContainer} />
+          <PillBox title="WELCOME TO CROWTOWN FAMILY!" containerType="InfoBox" />
         </div>
         <div className={styles.pillBox}>
-          <PillBox title="MEET DEB SHES DOPE!" container={PillBoxBottomContainer}/>
+          <PillBox title="MEET DEB SHES DOPE!" containerType="InfoBox"/>
         </div>
         <div className={styles.pillBox}>
-          <PillBox title="MADE WITH LOVE AND CARE AND SKILL AND STUFF!" container={PillBoxBottomContainer}/>
+          <PillBox title="MADE WITH LOVE AND CARE AND SKILL AND STUFF!" containerType="InfoBox"/>
         </div>
         <div className={styles.pillBox}>
-          <PillBox title="THESE ITEMS ARE DELUXE!" container={PillBoxBottomContainer}/>
+          <PillBox title="THESE ITEMS ARE DELUXE!" containerType="TopItems"/>
         </div>
         <div className={styles.pillBox}>
-          <PillBox title="OUR MYSPACE IS FLY!" container={PillBoxBottomContainer}/>
+          <PillBox title="OUR MYSPACE IS FLY!" containerType="Social"/>
         </div>
       </div>
     </>
