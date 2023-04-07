@@ -9,6 +9,8 @@ import { render } from 'react-dom';
 interface PillBoxProps { 
     title: string;
     containerType: "InfoBox" | "TopItems" | "Social";
+    infoBoxContainerProps?: InfoBoxContainerProps;
+    topItemsContainerProps?: TopItemsContainerProps;
 }
 
 interface PillBoxTitleProps {
@@ -19,10 +21,14 @@ interface InfoBoxContainerProps {
     title: string;
     text: string;
     photo: string;
+    orientation: "portriat" | "landscape";
+    direction: "left" | "right";
   }
 
   interface PillBoxBottomProps {
     containerType: "InfoBox" | "TopItems" | "Social";
+    infoBoxContainerProps?: InfoBoxContainerProps;
+    topItemsContainerProps?: TopItemsContainerProps;
   }
 
   interface InfoBoxTextProps {
@@ -32,6 +38,7 @@ interface InfoBoxContainerProps {
 
   interface InfoBoxPhotoProps {
     photo: string;
+    orientation: "portriat" | "landscape";
   }
 
   interface ImageObj  {
@@ -49,31 +56,42 @@ interface InfoBoxContainerProps {
 
 const PillBoxTitle: React.FC<PillBoxTitleProps> = ({title}) => {
   return(
-      <div className={styles.pillBoxTopTitle}>{title}</div>
+      <h1 className={styles.pillBoxTopTitle}>{title}</h1>
   );
 };
 
-  const InfoBoxText: React.FC<InfoBoxTextProps> = () => {
+  const InfoBoxText: React.FC<InfoBoxTextProps> = ({title, text}) => {
     return (
-      <div>
-        <div className={styles.infoBoxText}>InfoBoxTextComponentNowDifferentALsoPhoto</div>
+      <div className={styles.infoBoxTextBox}>
+        <h1 className={styles.infoBoxText}>{title}</h1>
+        <p className={styles.infoBoxText}>{text}</p>
       </div>
     );
   };
 
-    const InfoBoxPhoto: React.FC<InfoBoxPhotoProps> = ({photo}) => {
+    const InfoBoxPhoto: React.FC<InfoBoxPhotoProps> = ({photo, orientation}) => {
+        let width: number = 500;
+        let height: number = 500;
+        if (orientation === "landscape") {
+            width=500;
+            height=400;
+        }
+        if (orientation === "portriat") {
+            width=325;
+            height=400;
+        }
     return (
-        <div className={styles.infoBoxPhoto}>
-            <Image src={photo} alt="meaningful alt text" width={500} height={500} />
+        <div className={styles.infoBoxPhotoContainer}>
+            <Image className={styles.infoBoxPhoto} src={photo} alt="meaningful alt text" width={width} height={height} />
         </div>
     );
   };
 
-const InfoBoxContainer: React.FC<InfoBoxContainerProps> = ({title, text, photo}) => {
+const InfoBoxContainer: React.FC<InfoBoxContainerProps> = ({title, text, photo, orientation, direction}) => {
     return(
         <div className={styles.pillBoxBottomContainerInfo}>
             <InfoBoxText  title={title} text={text} />
-            <InfoBoxPhoto photo={photo}/>
+            <InfoBoxPhoto photo={photo} orientation={orientation}/>
         </div>
     );
 }
@@ -84,10 +102,30 @@ const TopItemsContainer: React.FC<TopItemsContainerProps> = ({items}) => {
     )
 }
 
-const containerPicker = (container: "InfoBox" | "TopItems" | "Social") => {
-    if (container === "InfoBox") {
+  const PillBoxBottomContainer: React.FC<PillBoxBottomProps> = ({containerType, infoBoxContainerProps, topItemsContainerProps}) => {
+    const container = containerPicker(containerType, infoBoxContainerProps, topItemsContainerProps)
     return (
-          <InfoBoxContainer title="A Dope Story" text="Lorem Ipsum Im Da ShizSon" photo="https://media.giphy.com/media/g7GKcSzwQfugw/giphy.gif?cid=ecf05e47q6a3uk7nnt6b4oso30u0ym2id60wrhyx3thfzam6&rid=giphy.gif&ct=g"/>
+    <div className={styles.pillBoxBottomContainer}>
+        {container}
+    </div>
+    );
+  };
+
+export const PillBox: React.FC<PillBoxProps> = ({title, containerType, infoBoxContainerProps, topItemsContainerProps}) => {
+return(
+    <div className={styles.pillBox}>
+    <PillBoxTitle title={title} />
+    <PillBoxBottomContainer containerType={containerType} infoBoxContainerProps={infoBoxContainerProps} topItemsContainerProps={topItemsContainerProps} />
+    </div>
+);
+};
+
+/* Helper Functions */
+
+const containerPicker = (container: "InfoBox" | "TopItems" | "Social", infoBoxContainerProps?: InfoBoxContainerProps, topItemsContainerProps?: TopItemsContainerProps) => {
+    if (container === "InfoBox" && infoBoxContainerProps ) {
+    return (
+          <InfoBoxContainer {...infoBoxContainerProps} />
       );
     }
     if (container === "TopItems") {
@@ -107,21 +145,3 @@ const containerPicker = (container: "InfoBox" | "TopItems" | "Social") => {
         )
     }
 }
-
-  const PillBoxBottomContainer: React.FC<PillBoxBottomProps> = ({containerType}) => {
-    const container = containerPicker(containerType)
-    return (
-    <div className={styles.pillBoxBottomContainer}>
-        {container}
-    </div>
-    );
-  };
-
-export const PillBox: React.FC<PillBoxProps> = ({title, containerType}) => {
-return(
-    <div className={styles.pillBox}>
-    <PillBoxTitle title={title} />
-    <PillBoxBottomContainer containerType={containerType} />
-    </div>
-);
-};

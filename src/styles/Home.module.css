@@ -1,30 +1,28 @@
 .topBar {
-    border: 2px solid green;
+    border: 1px solid green;
+    text-align: center;
 }
 
 .mainContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6rem;
-    min-height: 50vh;
-    border: 5px solid lawngreen;
+    min-height: 100vh;
+    border: 1px solid rgb(252, 80, 0);
 }
 
 .pillBox {
-    border: 5px solid crimson;
+    border: 1px solid hotpink;
     width: 100%;
     flex: auto;
 }
 
 .pillBoxTopTitle {
-    border: 5px solid darkseagreen;
+    border: 1px solid darkseagreen;
     text-align: center;
 }
 
 .pillBoxBottomContainerInfo {
-    border: 5px solid slateblue;
+    border: 1px solid yellow;
     width: 100%;
     flex: auto;
     display: flex;
@@ -32,13 +30,29 @@
 }
 
 .infoBoxPhoto {
-    border: 5px solid orangered;
+    border: 1px solid orangered;
+    /* display: block; */
+    margin: 0 auto;
+}
+
+.infoBoxPhotoContainer {
+    border: 1px solid teal;
     flex: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoBoxTextBox {
+    border: 1px solid slateblue;
+    flex: auto;
+    text-align: center;
 }
 
 .infoBoxText {
-    border: 5px solid palegreen;
+    border: 1px solid palegreen;
     flex: auto;
+    text-align: center;
 }
 
 
