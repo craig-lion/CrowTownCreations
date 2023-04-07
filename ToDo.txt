@@ -3,22 +3,22 @@ CrowTown ToDo
 - Complete Frontend
      - Complete HTML Layout
         x proper number of divs 
-        - style topBar
-        - style mainContainer
-        - style pillBoxes
-        - create pillBox
+        x style topBar
+        x style mainContainer
+        x style pillBoxes
+        x create pillBox
             x pillBox can render
             x pillBox has topTitle
             x topTitle is a prop
             x pillBox has bottomContainer
             - pillBoxBottomContainer accepts PillType prop
-        - create container for infoBox
-            - infoBox can render two components
-            - create subcomponents
-                - infoBoxPhoto
-                    - can display photo
-                - infoBoxText
-                    - infoBoxText has a title section
-                    - infoBoxText has a paragraph section
+        x create container for infoBox
+            x infoBox can render two components
+            x create subcomponents
+                x infoBoxPhoto
+                    x can display photo
+                x infoBoxText
+                    x infoBoxText has a title section
+                    x infoBoxText has a paragraph section
         - create container for topItems
         - create container for socials

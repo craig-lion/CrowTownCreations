@@ -88,12 +88,27 @@ const PillBoxTitle: React.FC<PillBoxTitleProps> = ({title}) => {
   };
 
 const InfoBoxContainer: React.FC<InfoBoxContainerProps> = ({title, text, photo, orientation, direction}) => {
+  if (direction === "left")  {
     return(
+      <div className={styles.pillBoxBottomContainerInfo}>
+          <InfoBoxPhoto photo={photo} orientation={orientation}/>
+          <InfoBoxText  title={title} text={text} />
+      </div>
+    );
+  }
+  if (direction === "right") {
+  return(
         <div className={styles.pillBoxBottomContainerInfo}>
             <InfoBoxText  title={title} text={text} />
             <InfoBoxPhoto photo={photo} orientation={orientation}/>
         </div>
     );
+  }
+  else {
+    return(
+      <div>U Dun Goofd - Add A Direction</div>
+    )
+  }
 }
 
 const TopItemsContainer: React.FC<TopItemsContainerProps> = ({items}) => {
@@ -102,20 +117,22 @@ const TopItemsContainer: React.FC<TopItemsContainerProps> = ({items}) => {
     )
 }
 
-  const PillBoxBottomContainer: React.FC<PillBoxBottomProps> = ({containerType, infoBoxContainerProps, topItemsContainerProps}) => {
-    const container = containerPicker(containerType, infoBoxContainerProps, topItemsContainerProps)
-    return (
-    <div className={styles.pillBoxBottomContainer}>
-        {container}
-    </div>
-    );
-  };
+const PillBoxBottomContainer: React.FC<PillBoxBottomProps> = ({containerType, infoBoxContainerProps, topItemsContainerProps}) => {
+  const container = containerPicker(containerType, infoBoxContainerProps, topItemsContainerProps)
+  return (
+  <div className={styles.pillBoxBottomContainer}>
+      {container}
+  </div>
+  );
+};
 
 export const PillBox: React.FC<PillBoxProps> = ({title, containerType, infoBoxContainerProps, topItemsContainerProps}) => {
 return(
-    <div className={styles.pillBox}>
-    <PillBoxTitle title={title} />
-    <PillBoxBottomContainer containerType={containerType} infoBoxContainerProps={infoBoxContainerProps} topItemsContainerProps={topItemsContainerProps} />
+    <div className={styles.pillBoxContainer}>
+      <div className={styles.pillBox}>
+        <PillBoxTitle title={title} />
+        <PillBoxBottomContainer containerType={containerType} infoBoxContainerProps={infoBoxContainerProps} topItemsContainerProps={topItemsContainerProps} />
+      </div>
     </div>
 );
 };
